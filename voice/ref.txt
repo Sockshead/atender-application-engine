@@ -1,0 +1,1 @@
+This is my agent fleet. Eight specialists, one orchestrator. The routing is tested in CI.
