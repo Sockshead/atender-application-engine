@@ -1,5 +1,5 @@
 import React from "react";
-import { AbsoluteFill } from "remotion";
+import { AbsoluteFill, Audio, Sequence, staticFile } from "remotion";
 import { TransitionSeries, linearTiming } from "@remotion/transitions";
 import { fade } from "@remotion/transitions/fade";
 import { theme } from "./theme";
@@ -15,6 +15,9 @@ import { DispatchPanel, SynthPanel } from "./components/SimplePanel";
 
 export const AtenderTuesday: React.FC = () => (
   <AbsoluteFill style={{ backgroundColor: theme.paper }}>
+    <Sequence from={95}>
+      <Audio src={staticFile("vo.m4a")} volume={0.92} />
+    </Sequence>
     <TransitionSeries>
       <TransitionSeries.Sequence durationInFrames={105}>
         <TitleCard line="This is my normal Tuesday." kicker="for Atender" />
