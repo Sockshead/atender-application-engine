@@ -1,5 +1,7 @@
 import React from "react";
-import { AbsoluteFill, Series } from "remotion";
+import { AbsoluteFill } from "remotion";
+import { TransitionSeries, linearTiming } from "@remotion/transitions";
+import { fade } from "@remotion/transitions/fade";
 import { theme } from "./theme";
 import { TitleCard } from "./components/TitleCard";
 import { FootageStage } from "./components/FootageStage";
@@ -8,50 +10,52 @@ import { ParallelPanel } from "./components/ParallelPanel";
 import { MoneyShot } from "./components/MoneyShot";
 import { DispatchPanel, SynthPanel } from "./components/SimplePanel";
 
-// 58s at 30fps = 1740 frames. Beat sheet per the approved plan.
+// Beat durations padded +15f each to absorb the 15f cross-fades.
+// Net length = sum(1845) - 6 transitions * 15 = 1755 frames (~58.5s).
+
 export const AtenderTuesday: React.FC = () => (
   <AbsoluteFill style={{ backgroundColor: theme.paper }}>
-    <Series>
-      <Series.Sequence durationInFrames={90}>
+    <TransitionSeries>
+      <TransitionSeries.Sequence durationInFrames={105}>
         <TitleCard line="This is my normal Tuesday." kicker="for Atender" />
-      </Series.Sequence>
-
-      <Series.Sequence durationInFrames={270}>
-        <FootageStage label="8 specialists - 1 orchestrator - tested in CI">
+      </TransitionSeries.Sequence>
+      <TransitionSeries.Transition presentation={fade()} timing={linearTiming({ durationInFrames: 15 })} />
+      <TransitionSeries.Sequence durationInFrames={285}>
+        <FootageStage label="the fleet contract, validated in CI" captureSrc="cli.mp4">
           <FleetPanel />
         </FootageStage>
-      </Series.Sequence>
-
-      <Series.Sequence durationInFrames={180}>
+      </TransitionSeries.Sequence>
+      <TransitionSeries.Transition presentation={fade()} timing={linearTiming({ durationInFrames: 15 })} />
+      <TransitionSeries.Sequence durationInFrames={195}>
         <FootageStage label="one dispatch in">
           <DispatchPanel />
         </FootageStage>
-      </Series.Sequence>
-
-      <Series.Sequence durationInFrames={360}>
+      </TransitionSeries.Sequence>
+      <TransitionSeries.Transition presentation={fade()} timing={linearTiming({ durationInFrames: 15 })} />
+      <TransitionSeries.Sequence durationInFrames={375}>
         <FootageStage label="four specialists, parallel - I steered, I didn't type">
           <ParallelPanel />
         </FootageStage>
-      </Series.Sequence>
-
-      <Series.Sequence durationInFrames={300}>
+      </TransitionSeries.Sequence>
+      <TransitionSeries.Transition presentation={fade()} timing={linearTiming({ durationInFrames: 15 })} />
+      <TransitionSeries.Sequence durationInFrames={315}>
         <FootageStage label="synthesis - one go/no-go">
           <SynthPanel />
         </FootageStage>
-      </Series.Sequence>
-
-      <Series.Sequence durationInFrames={240}>
-        <FootageStage label="CI green - fleet contract passing">
+      </TransitionSeries.Sequence>
+      <TransitionSeries.Transition presentation={fade()} timing={linearTiming({ durationInFrames: 15 })} />
+      <TransitionSeries.Sequence durationInFrames={255}>
+        <FootageStage label="CI green - the fleet shipped it" captureSrc="ci.mp4">
           <MoneyShot />
         </FootageStage>
-      </Series.Sequence>
-
-      <Series.Sequence durationInFrames={300}>
+      </TransitionSeries.Sequence>
+      <TransitionSeries.Transition presentation={fade()} timing={linearTiming({ durationInFrames: 15 })} />
+      <TransitionSeries.Sequence durationInFrames={315}>
         <TitleCard
           line="Not a side experiment. It's how every feature ships."
           footer="Juan Camilo Posada  -  for Atender"
         />
-      </Series.Sequence>
-    </Series>
+      </TransitionSeries.Sequence>
+    </TransitionSeries>
   </AbsoluteFill>
 );

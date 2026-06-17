@@ -17,7 +17,7 @@ export const FootageStage: React.FC<{
     <AbsoluteFill style={{ backgroundColor: theme.paper2, justifyContent: "center", alignItems: "center" }}>
       <div style={{ transform: `scale(${scale})` }}>
         {captureSrc ? (
-          <OffthreadVideo src={staticFile(captureSrc)} style={{ width: 1320, borderRadius: 10 }} />
+          <OffthreadVideo src={staticFile(captureSrc)} style={{ width: 1320, borderRadius: 10, border: "1px solid #1A1612", boxShadow: "10px 10px 0 #1A1612" }} />
         ) : (
           children
         )}

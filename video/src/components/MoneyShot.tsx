@@ -18,7 +18,7 @@ export const MoneyShot: React.FC = () => {
         feat: agent fleet builds the application
       </div>
       <div style={{ color: theme.inkFaint, marginBottom: 22 }}>
-        opened by the fleet, reviewed and shipped
+        opened by the fleet  -  commit 901aba7 on main  -  run #27661360704
       </div>
       {CHECKS.map((c, i) => {
         const on = frame >= 30 + i * 22;

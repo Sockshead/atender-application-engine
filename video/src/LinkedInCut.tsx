@@ -1,5 +1,7 @@
 import React from "react";
-import { AbsoluteFill, Series, useCurrentFrame, interpolate } from "remotion";
+import { AbsoluteFill, useCurrentFrame, interpolate } from "remotion";
+import { TransitionSeries, linearTiming } from "@remotion/transitions";
+import { fade } from "@remotion/transitions/fade";
 import { theme } from "./theme";
 import { serif } from "./fonts";
 import { MonoLabel } from "./components/MonoLabel";
@@ -14,19 +16,8 @@ const Hook: React.FC = () => {
     <AbsoluteFill style={{ backgroundColor: theme.paper, padding: 90, justifyContent: "center" }}>
       <PaperGrain />
       <div style={{ opacity: op }}>
-        <MonoLabel color={theme.clay} size={26}>
-          for atender
-        </MonoLabel>
-        <div
-          style={{
-            fontFamily: serif,
-            fontSize: 78,
-            lineHeight: 1.06,
-            color: theme.ink,
-            marginTop: 28,
-            letterSpacing: "-0.02em",
-          }}
-        >
+        <MonoLabel color={theme.clay} size={26}>for atender</MonoLabel>
+        <div style={{ fontFamily: serif, fontSize: 78, lineHeight: 1.06, color: theme.ink, marginTop: 28, letterSpacing: "-0.02em" }}>
           "Five to ten agents in parallel on a normal day."
           <span style={{ display: "block", fontStyle: "italic", color: theme.clayDeep, marginTop: 16 }}>
             Here's one of mine - and the CI test that proves the fleet is real.
@@ -43,23 +34,22 @@ const Portrait: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   </AbsoluteFill>
 );
 
-// 15s at 30fps = 450 frames, vertical 1080x1920.
+// Net = sum(465) - 2*15 = 435 frames (~14.5s), vertical 1080x1920.
+
 export const LinkedInCut: React.FC = () => (
   <AbsoluteFill style={{ backgroundColor: theme.paper }}>
-    <Series>
-      <Series.Sequence durationInFrames={90}>
+    <TransitionSeries>
+      <TransitionSeries.Sequence durationInFrames={105}>
         <Hook />
-      </Series.Sequence>
-      <Series.Sequence durationInFrames={180}>
-        <Portrait>
-          <ParallelPanel />
-        </Portrait>
-      </Series.Sequence>
-      <Series.Sequence durationInFrames={180}>
-        <Portrait>
-          <MoneyShot />
-        </Portrait>
-      </Series.Sequence>
-    </Series>
+      </TransitionSeries.Sequence>
+      <TransitionSeries.Transition presentation={fade()} timing={linearTiming({ durationInFrames: 15 })} />
+      <TransitionSeries.Sequence durationInFrames={180}>
+        <Portrait><ParallelPanel /></Portrait>
+      </TransitionSeries.Sequence>
+      <TransitionSeries.Transition presentation={fade()} timing={linearTiming({ durationInFrames: 15 })} />
+      <TransitionSeries.Sequence durationInFrames={180}>
+        <Portrait><MoneyShot /></Portrait>
+      </TransitionSeries.Sequence>
+    </TransitionSeries>
   </AbsoluteFill>
 );
