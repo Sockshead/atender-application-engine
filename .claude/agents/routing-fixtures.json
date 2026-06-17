@@ -1,0 +1,21 @@
+{
+  "_doc": "Task to expected-specialist fixtures. Asserted exact-match by .claude/scripts/validate-agent-fleet.mjs against fleet-routing.json. This is the binary acceptance criterion for the orchestrator routing map.",
+  "fixtures": [
+    { "task": "Add a new tab to the app nav behind a feature flag", "expect": "frontend-engineer" },
+    { "task": "Build the new screen component with shadcn and our design tokens", "expect": "frontend-engineer" },
+    { "task": "Add a new API endpoint and a Drizzle migration for it", "expect": "backend-engineer" },
+    { "task": "Fix the auth middleware on the profiles controller", "expect": "backend-engineer" },
+    { "task": "Run the personas and validate the deploy on staging", "expect": "qa-persona" },
+    { "task": "Phone test the merged PR and run the e2e loop", "expect": "qa-persona" },
+    { "task": "Pull the WAU and DAU funnel from PostHog and design an experiment", "expect": "data-analyst" },
+    { "task": "Analyze retention and activation metrics this week", "expect": "data-analyst" },
+    { "task": "Deploy the backend to qa and check the CloudWatch alarms", "expect": "devops-deploy" },
+    { "task": "Roll back the lambda and run a snapshot", "expect": "devops-deploy" },
+    { "task": "Write an ADR and verify its citations against the code", "expect": "docs-curator" },
+    { "task": "Update the documentation manifest and the readme", "expect": "docs-curator" },
+    { "task": "Promote the release train from develop to main in merge order", "expect": "release-conductor" },
+    { "task": "Ship the qa-passed PRs to prod via the release train", "expect": "release-conductor" },
+    { "task": "Draft the ambassador outreach campaign and seed demo content", "expect": "growth-ops" },
+    { "task": "Run the activation lifecycle lever and the growth campaign", "expect": "growth-ops" }
+  ]
+}

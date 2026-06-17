@@ -1,0 +1,8 @@
+node_modules/
+out/
+.DS_Store
+*.log
+video/out/
+.env
+.env.*
+voice/samples/

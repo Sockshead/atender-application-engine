@@ -1,0 +1,50 @@
+{
+  "_doc": "Canonical routing map for the agent fleet. The orchestrator reads task context and dispatches to the specialist whose `match` intent scores highest. `skills` are repo skills (.claude/skills/) the specialist owns; `subagents` are .claude/agents/ defs it may spawn. Validated by .claude/scripts/validate-agent-fleet.mjs. Sanitized extraction of a fleet run on a private production codebase: product names, metrics, and credentials are genericized; the architecture, routing, gates, and CI validation are real.",
+  "orchestrator": "cto-orchestrator",
+  "specialists": {
+    "frontend-engineer": {
+      "scope": "web/ (React + TypeScript + Vite)",
+      "skills": ["react-components", "shadcn-ui", "feature-flag-toggle", "taste-design"],
+      "gates": ["check:layout", "test:frontend", "check:design-tokens"],
+      "match": ["ui", "screen", "component", "tab", "flag", "frontend", "css", "layout", "design token", "react"]
+    },
+    "backend-engineer": {
+      "scope": "api/, db/ (Express + TSOA + Drizzle/Postgres)",
+      "skills": ["new-api-route", "drizzle-migration", "critical-tests", "db-query"],
+      "subagents": ["security-reviewer", "migration-safety-checker"],
+      "gates": ["migrate:check", "test:backend", "test:evidence"],
+      "match": ["api", "endpoint", "migration", "schema", "auth", "backend", "service", "controller", "drizzle"]
+    },
+    "qa-persona": {
+      "scope": "e2e + product UX",
+      "skills": ["qa-develop-gate", "local-dev-setup", "dogfood-sync"],
+      "match": ["test", "persona", "qa", "validate deploy", "e2e", "screenshot the app", "phone test", "run the loop"]
+    },
+    "data-analyst": {
+      "scope": "product analytics",
+      "skills": ["posthog-analyst", "ab-test-designer", "db-query", "research-product"],
+      "match": ["metric", "dau", "wau", "mau", "posthog", "experiment", "funnel", "analytics", "retention", "activation"]
+    },
+    "devops-deploy": {
+      "scope": "deploy / infra",
+      "skills": ["deploy-local", "deploy-report", "observability-alerts"],
+      "match": ["deploy", "infra", "lambda", "alarm", "cron", "release to env", "rollback", "snapshot"]
+    },
+    "docs-curator": {
+      "scope": "docs/ + planning",
+      "skills": ["adr-writer", "citation-verifier", "docs-sync", "docs-architect", "curator"],
+      "match": ["adr", "docs", "documentation", "citation", "manifest", "readme", "playbook", "how-to"]
+    },
+    "release-conductor": {
+      "scope": "release trains",
+      "skills": ["promote-train", "rebase-open-prs-after-merge", "release-train-evidence", "branch-lifecycle"],
+      "match": ["release", "promote", "train", "merge order", "qa-passed", "develop to main", "ship to prod"]
+    },
+    "growth-ops": {
+      "scope": "activation / lifecycle / retention levers",
+      "skills": ["posthog-analyst", "seed-entities", "create-issue"],
+      "enforces": ["brand-voice"],
+      "match": ["growth", "campaign", "activation", "lifecycle", "seed", "outreach", "ambassador", "retention lever"]
+    }
+  }
+}

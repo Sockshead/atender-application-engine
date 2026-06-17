@@ -1,0 +1,56 @@
+name: ci
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  validate-agent-fleet:
+    name: validate-agent-fleet (routing + resolution + secret-scan)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node .claude/scripts/validate-agent-fleet.mjs
+
+  video-typecheck:
+    name: video / typecheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - working-directory: video
+        run: npm ci
+      - working-directory: video
+        run: npm run typecheck
+
+  video-bundle:
+    name: video / bundle
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - working-directory: video
+        run: npm ci
+      - working-directory: video
+        run: npm run build
+
+  lint:
+    name: lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: JSON validity + no leftover markers
+        run: |
+          for f in $(git ls-files '*.json'); do node -e "JSON.parse(require('fs').readFileSync('$f','utf8'))" || exit 1; done
+          ! git grep -nE 'TODO|FIXME|XXX' -- '*.ts' '*.tsx' '*.mjs' || (echo 'leftover marker found' && exit 1)
+          echo "lint ok"
