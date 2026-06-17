@@ -14,6 +14,16 @@ repo is the engine. The video, the portfolio patch, and the voiceover were produ
 
 This is not a description of the engineer in your JD. It is that engineer's working setup.
 
+## Watch: my normal Tuesday (60 seconds)
+
+[![Watch the 60-second video](media/poster.png)](https://github.com/Sockshead/atender-application-engine/blob/main/media/atender-tuesday-60s.mp4)
+
+Rendered in code. Every terminal beat is a real capture (the fleet validated in CI, the green build), with my own voiceover and captions.
+
+- Plays inline in a browser: https://sockshead.github.io/portfolio/watch.html
+- Machine-readable transcript + beat list (for AI screeners that cannot watch): [media/VIDEO.md](media/VIDEO.md)
+- Captions (WebVTT): [media/atender-tuesday-60s.vtt](media/atender-tuesday-60s.vtt)
+
 ## What is in here
 
 - **`.claude/agents/`** - an orchestrator-worker agent fleet: one `cto-orchestrator` that routes a

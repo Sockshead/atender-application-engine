@@ -1,0 +1,34 @@
+WEBVTT
+
+00:00:00.400 --> 00:00:03.400
+This is my normal Tuesday.
+
+00:00:03.333 --> 00:00:09.733
+This is my agent fleet. Eight specialists, one orchestrator. The routing is tested in CI.
+
+00:00:10.700 --> 00:00:17.567
+One task in. The orchestrator plans and fans out. Four specialists in parallel,
+
+00:00:18.300 --> 00:00:26.767
+each with its own scope and gates. I steered. I didn't type code. It synthesizes, the gates pass.
+
+00:00:26.767 --> 00:00:31.933
+It opens the PR. Not a side experiment. It's how every feature ships.
+
+00:00:33.667 --> 00:00:35.833
+I ship AI in production.
+
+00:00:35.833 --> 00:00:39.933
+In the last six weeks I merged 60+ pull requests
+
+00:00:39.933 --> 00:00:45.733
+from frontend to infrastructure, at an average cycle time under 18 hours.
+
+00:00:45.733 --> 00:00:49.133
+The fleet writes the migration, the route, the component,
+
+00:00:49.133 --> 00:00:51.300
+and the decision record in parallel,
+
+00:00:51.300 --> 00:00:54.000
+while I review and approve.

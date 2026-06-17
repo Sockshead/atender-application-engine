@@ -12,11 +12,17 @@ import { Captions } from "./components/Captions";
 export const AtenderTuesday: React.FC = () => (
   <AbsoluteFill style={{ backgroundColor: theme.paper }}>
     <Audio src={staticFile("music.m4a")} volume={0.13} />
+    <Sequence from={12}>
+      <Audio src={staticFile("vo-open.m4a")} volume={0.97} />
+    </Sequence>
     <Sequence from={100}>
       <Audio src={staticFile("vo.m4a")} volume={0.95} />
     </Sequence>
     <Sequence from={1010}>
       <Audio src={staticFile("vo-b.m4a")} volume={0.95} />
+    </Sequence>
+    <Sequence from={1455}>
+      <Audio src={staticFile("vo-close.m4a")} volume={0.97} />
     </Sequence>
     <TransitionSeries>
       <TransitionSeries.Sequence durationInFrames={105}>

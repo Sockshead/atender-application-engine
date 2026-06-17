@@ -21,3 +21,10 @@ GitHub https://github.com/Sockshead - LinkedIn https://www.linkedin.com/in/juan-
 ## Honesty
 Sanitized extraction of a fleet run on a private codebase. Product names, metrics, credentials,
 and customer data are genericized or removed; the architecture, routing, gates, and CI are real.
+
+## Video (the 60-second "normal Tuesday")
+- Watch inline: https://sockshead.github.io/portfolio/watch.html
+- File: media/atender-tuesday-60s.mp4 (60s) and media/atender-tuesday-15s.mp4 (15s)
+- Captions: media/atender-tuesday-60s.vtt
+- Machine-readable transcript + beat-by-beat description: media/VIDEO.md
+- The video shows a real agent fleet validated in CI producing real green-CI work; rendered in code.
