@@ -5,60 +5,44 @@ import { fade } from "@remotion/transitions/fade";
 import { theme } from "./theme";
 import { TitleCard } from "./components/TitleCard";
 import { FootageStage } from "./components/FootageStage";
-import { FleetPanel } from "./components/FleetPanel";
-import { ParallelPanel } from "./components/ParallelPanel";
-import { MoneyShot } from "./components/MoneyShot";
-import { DispatchPanel, SynthPanel } from "./components/SimplePanel";
+import { Captions } from "./components/Captions";
 
-// Beat durations padded +15f each to absorb the 15f cross-fades.
-// Net length = sum(1845) - 6 transitions * 15 = 1755 frames (~58.5s).
-
+// All footage is REAL terminal capture (VHS). Beats = clip length + ~2s hold on the result.
+// Net = sum(1699) - 5 transitions * 15 = 1624 frames (~54s).
 export const AtenderTuesday: React.FC = () => (
   <AbsoluteFill style={{ backgroundColor: theme.paper }}>
-    <Sequence from={95}>
-      <Audio src={staticFile("vo.m4a")} volume={0.92} />
+    <Audio src={staticFile("music.m4a")} volume={0.13} />
+    <Sequence from={100}>
+      <Audio src={staticFile("vo.m4a")} volume={0.95} />
+    </Sequence>
+    <Sequence from={1010}>
+      <Audio src={staticFile("vo-b.m4a")} volume={0.95} />
     </Sequence>
     <TransitionSeries>
       <TransitionSeries.Sequence durationInFrames={105}>
         <TitleCard line="This is my normal Tuesday." kicker="for Atender" />
       </TransitionSeries.Sequence>
       <TransitionSeries.Transition presentation={fade()} timing={linearTiming({ durationInFrames: 15 })} />
-      <TransitionSeries.Sequence durationInFrames={285}>
-        <FootageStage label="the fleet contract, validated in CI" captureSrc="cli.mp4">
-          <FleetPanel />
-        </FootageStage>
+      <TransitionSeries.Sequence durationInFrames={443}>
+        <FootageStage label="the fleet: 1 orchestrator, 8 specialists, 2 reviewers" captureSrc="team.mp4" />
       </TransitionSeries.Sequence>
       <TransitionSeries.Transition presentation={fade()} timing={linearTiming({ durationInFrames: 15 })} />
-      <TransitionSeries.Sequence durationInFrames={195}>
-        <FootageStage label="one dispatch in">
-          <DispatchPanel />
-        </FootageStage>
+      <TransitionSeries.Sequence durationInFrames={295}>
+        <FootageStage label="the contract, validated in CI" captureSrc="cli.mp4" />
       </TransitionSeries.Sequence>
       <TransitionSeries.Transition presentation={fade()} timing={linearTiming({ durationInFrames: 15 })} />
-      <TransitionSeries.Sequence durationInFrames={375}>
-        <FootageStage label="four specialists, parallel - I steered, I didn't type">
-          <ParallelPanel />
-        </FootageStage>
+      <TransitionSeries.Sequence durationInFrames={356}>
+        <FootageStage label="the work the fleet shipped" captureSrc="work.mp4" />
       </TransitionSeries.Sequence>
       <TransitionSeries.Transition presentation={fade()} timing={linearTiming({ durationInFrames: 15 })} />
-      <TransitionSeries.Sequence durationInFrames={315}>
-        <FootageStage label="synthesis - one go/no-go">
-          <SynthPanel />
-        </FootageStage>
+      <TransitionSeries.Sequence durationInFrames={320}>
+        <FootageStage label="CI green - the fleet shipped it" captureSrc="ci.mp4" />
       </TransitionSeries.Sequence>
       <TransitionSeries.Transition presentation={fade()} timing={linearTiming({ durationInFrames: 15 })} />
-      <TransitionSeries.Sequence durationInFrames={255}>
-        <FootageStage label="CI green - the fleet shipped it" captureSrc="ci.mp4">
-          <MoneyShot />
-        </FootageStage>
-      </TransitionSeries.Sequence>
-      <TransitionSeries.Transition presentation={fade()} timing={linearTiming({ durationInFrames: 15 })} />
-      <TransitionSeries.Sequence durationInFrames={315}>
-        <TitleCard
-          line="Not a side experiment. It's how every feature ships."
-          footer="Juan Camilo Posada  -  for Atender"
-        />
+      <TransitionSeries.Sequence durationInFrames={180}>
+        <TitleCard line="Not a side experiment. It's how every feature ships." footer="Juan Camilo Posada  -  for Atender" />
       </TransitionSeries.Sequence>
     </TransitionSeries>
+    <Captions />
   </AbsoluteFill>
 );

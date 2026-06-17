@@ -5,8 +5,7 @@ import { fade } from "@remotion/transitions/fade";
 import { theme } from "./theme";
 import { serif } from "./fonts";
 import { MonoLabel } from "./components/MonoLabel";
-import { ParallelPanel } from "./components/ParallelPanel";
-import { MoneyShot } from "./components/MoneyShot";
+import { FootageStage } from "./components/FootageStage";
 import { PaperGrain } from "./components/PaperGrain";
 
 const Hook: React.FC = () => {
@@ -28,27 +27,20 @@ const Hook: React.FC = () => {
   );
 };
 
-const Portrait: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-  <AbsoluteFill style={{ backgroundColor: theme.paper2, justifyContent: "center", alignItems: "center" }}>
-    <div style={{ transform: "scale(0.78)" }}>{children}</div>
-  </AbsoluteFill>
-);
-
-// Net = sum(465) - 2*15 = 435 frames (~14.5s), vertical 1080x1920.
-
+// Net = sum(480) - 2 transitions * 15 = 450 frames (~15s), vertical 1080x1920.
 export const LinkedInCut: React.FC = () => (
   <AbsoluteFill style={{ backgroundColor: theme.paper }}>
     <TransitionSeries>
-      <TransitionSeries.Sequence durationInFrames={105}>
+      <TransitionSeries.Sequence durationInFrames={90}>
         <Hook />
       </TransitionSeries.Sequence>
       <TransitionSeries.Transition presentation={fade()} timing={linearTiming({ durationInFrames: 15 })} />
-      <TransitionSeries.Sequence durationInFrames={180}>
-        <Portrait><ParallelPanel /></Portrait>
+      <TransitionSeries.Sequence durationInFrames={150}>
+        <FootageStage label="the contract, tested in CI" captureSrc="cli.mp4" videoWidth={980} />
       </TransitionSeries.Sequence>
       <TransitionSeries.Transition presentation={fade()} timing={linearTiming({ durationInFrames: 15 })} />
-      <TransitionSeries.Sequence durationInFrames={180}>
-        <Portrait><MoneyShot /></Portrait>
+      <TransitionSeries.Sequence durationInFrames={240}>
+        <FootageStage label="CI green - the fleet shipped it" captureSrc="ci.mp4" videoWidth={980} />
       </TransitionSeries.Sequence>
     </TransitionSeries>
   </AbsoluteFill>
