@@ -1,5 +1,8 @@
 # atender-application-engine
 
+[![ci](https://github.com/Sockshead/atender-application-engine/actions/workflows/ci.yml/badge.svg)](https://github.com/Sockshead/atender-application-engine/actions/workflows/ci.yml)
+
+
 I am applying to Atender as a Software Engineer. Your job post says you want engineers who treat
 **AI as the substrate every software job is being rebuilt on**, who **automate their own job away
 as a career plan**, and who run **five to ten agents in parallel on a normal day**. It asks me to
