@@ -1,0 +1,23 @@
+# atender-application-engine
+
+> An agent-orchestrated engine that produced a job application: the AI fleet, the video, and the
+> portfolio. Built by Juan Camilo Posada (Choko) for the Atender Software Engineer role. The
+> application IS the demonstration: an engineer who treats AI as substrate and automates his own work.
+
+## What this repo is
+- A sanitized orchestrator-worker agent fleet: one orchestrator + eight specialists + two review
+  subagents, with a routing contract tested in CI.
+- A Remotion video pipeline (video rendered in code) for the "normal Tuesday" cut.
+- The voice pipeline and the OpenSpec change that planned the build.
+
+## Proof
+- `node .claude/scripts/validate-agent-fleet.mjs` validates routing + skill resolution + a
+  secret-leak scan. It runs in CI on every push; green CI means the fleet contract holds.
+
+## Author
+Juan Camilo Posada (Choko). AI-native engineer. https://sockshead.github.io/portfolio/
+GitHub https://github.com/Sockshead - LinkedIn https://www.linkedin.com/in/juan-camilo-posada/
+
+## Honesty
+Sanitized extraction of a fleet run on a private codebase. Product names, metrics, credentials,
+and customer data are genericized or removed; the architecture, routing, gates, and CI are real.
